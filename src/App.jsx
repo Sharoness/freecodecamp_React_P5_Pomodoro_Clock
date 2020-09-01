@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import './App.css';
 
 const App = () => {
-  const [breakLengthCount, setbreakLengthCount] = useState(5);
-  const [sessionLengthCount, setsessionLengthCount] = useState(25);
-  const [timerCount, settimerCount] = useState(sessionLengthCount);
+  const [breakLengthCount, setBreakLengthCount] = useState(5);
+  const [sessionLengthCount, setSessionLengthCount] = useState(25);
+  const [timerCount, setTimerCount] = useState(sessionLengthCount*60);
 
+  const countDown = () => {
+    setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
+  }
 
   return (
     <div>
@@ -23,7 +26,7 @@ const App = () => {
       <div id="session-length">Session length: {sessionLengthCount}</div>
       <div id="timer-label">Session</div>
       <div id="time-left">Time left: {timerCount}</div>
-      <button id="start_stop">start/stop</button>
+      <button id="start_stop" onClick={countDown}>start/stop</button>
       <button id="reset">reset</button>
     </div>
     );
