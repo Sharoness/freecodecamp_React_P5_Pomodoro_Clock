@@ -17,6 +17,12 @@ const App = () => {
     }
   }
 
+  const increase = (setter, state) => {
+    return (() => {
+      setter(state + 1);
+    })
+  }
+
   return (
     <div>
       <div id="break-label">
@@ -27,8 +33,8 @@ const App = () => {
       </div>
       <button id="break-decrement">break v</button>
       <button id="session-decrement">session v</button>
-      <button id="break-increment">break ^</button>
-      <button id="session-increment">session ^</button>
+      <button id="break-increment" onClick={increase(setBreakLengthCount, breakLengthCount)}>break ^</button>
+      <button id="session-increment" onClick={increase(setSessionLengthCount, sessionLengthCount)}>session ^</button>
       <div id="break-length">Break length: {breakLengthCount}</div>
       <div id="session-length">Session length: {sessionLengthCount}</div>
       <div id="timer-label">Session</div>
