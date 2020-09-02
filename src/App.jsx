@@ -17,6 +17,14 @@ const App = () => {
     }
   }
 
+  const reset = () => {
+    setBreakLengthCount(5);
+    setSessionLengthCount(25);
+    setTimerCount(1500);
+    clearInterval(tellerId);
+    setTellerId(undefined);
+  }
+
   const increase = (setter, state) => {
     return (() => {
       setter(state + 1);
@@ -46,7 +54,7 @@ const App = () => {
       <div id="timer-label">Session</div>
       <div id="time-left">Time left: {timerCount}</div>
       <button id="start_stop" onClick={startstop}>start/stop</button>
-      <button id="reset">reset</button>
+      <button id="reset" onClick={reset}>reset</button>
     </div>
     );
 }
