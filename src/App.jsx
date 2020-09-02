@@ -5,9 +5,16 @@ const App = () => {
   const [breakLengthCount, setBreakLengthCount] = useState(5);
   const [sessionLengthCount, setSessionLengthCount] = useState(25);
   const [timerCount, setTimerCount] = useState(sessionLengthCount*60);
+  const [tellerId, setTellerId] = useState();
 
-  const countDown = () => {
-    setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
+  const startstop = () => {
+    if (tellerId !== undefined) {
+      clearInterval(tellerId);
+      setTellerId(undefined);
+    } else {
+      const id = setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
+      setTellerId(id);
+    }
   }
 
   return (
@@ -26,7 +33,7 @@ const App = () => {
       <div id="session-length">Session length: {sessionLengthCount}</div>
       <div id="timer-label">Session</div>
       <div id="time-left">Time left: {timerCount}</div>
-      <button id="start_stop" onClick={countDown}>start/stop</button>
+      <button id="start_stop" onClick={startstop}>start/stop</button>
       <button id="reset">reset</button>
     </div>
     );
