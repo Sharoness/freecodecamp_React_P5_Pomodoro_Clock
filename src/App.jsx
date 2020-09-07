@@ -37,6 +37,29 @@ const App = () => {
     })
   }
 
+  const secToMmSs = (state) => {
+    const minutes = (state) => {
+      return ((state-state%60)/60);
+    }
+    const seconds = (state) => {
+      return state%60;
+    }
+    if (minutes(state) < 10 && seconds(state) < 10) {
+      return "0"+minutes(state)+":0"+seconds(state);
+    }
+    if (minutes(state) < 10 && seconds(state) > 10) {
+      return "0"+minutes(state)+":"+seconds(state);
+    }
+    if (minutes(state) > 10 && seconds(state) < 10) {
+      return minutes(state)+":0"+seconds(state);
+    }
+    if (minutes(state) > 10 && seconds(state) > 10) {
+      return minutes(state)+":"+seconds(state);
+    } else {
+      throw new Error("Unexpected time received")
+    }
+  }
+
   return (
     <div>
       <div id="break-label">
@@ -52,12 +75,11 @@ const App = () => {
       <div id="break-length">Break length: {breakLengthCount}</div>
       <div id="session-length">Session length: {sessionLengthCount}</div>
       <div id="timer-label">Session</div>
-      <div id="time-left">Time left: {timerCount}</div>
+      <div id="time-left">Time left: {secToMmSs(timerCount)}</div>
       <button id="start_stop" onClick={startstop}>start/stop</button>
       <button id="reset" onClick={reset}>reset</button>
     </div>
     );
 }
-
 
 export default App;
