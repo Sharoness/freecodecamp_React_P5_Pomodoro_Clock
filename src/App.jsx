@@ -26,15 +26,19 @@ const App = () => {
   }
 
   const increase = (setter, state) => {
-    return (() => {
-      setter(state + 1);
-    })
+    if (tellerId == undefined) {
+      return (() => {
+        setter(state + 1);
+      })
+    }
   }
 
   const decrease = (setter, state) => {
-    return (() => {
-      setter(state - 1);
-    })
+    if (tellerId == undefined) {
+      return (() => {
+        setter(state - 1);
+      })
+    }
   }
 
   const secToMmSs = (state) => {
