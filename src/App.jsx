@@ -38,26 +38,21 @@ const App = () => {
   }
 
   const secToMmSs = (state) => {
-    const minutes = (state) => {
-      return ((state-state%60)/60);
+    const minutes = (state-state%60)/60
+    const seconds = state%60;
+    if (minutes < 10 && seconds < 10) {
+      return "0"+minutes+":0"+seconds;
     }
-    const seconds = (state) => {
-      return state%60;
+    if (minutes < 10 && seconds >= 10) {
+      return "0"+minutes+":"+seconds;
     }
-    if (minutes(state) < 10 && seconds(state) < 10) {
-      return "0"+minutes(state)+":0"+seconds(state);
+    if (minutes >= 10 && seconds < 10) {
+      return minutes+":0"+seconds;
     }
-    if (minutes(state) < 10 && seconds(state) > 10) {
-      return "0"+minutes(state)+":"+seconds(state);
+    if (minutes >= 10 && seconds >= 10) {
+      return minutes+":"+seconds;
     }
-    if (minutes(state) > 10 && seconds(state) < 10) {
-      return minutes(state)+":0"+seconds(state);
-    }
-    if (minutes(state) > 10 && seconds(state) > 10) {
-      return minutes(state)+":"+seconds(state);
-    } else {
-      throw new Error("Unexpected time received")
-    }
+    throw new Error("Unexpected time received " + state);
   }
 
   return (
