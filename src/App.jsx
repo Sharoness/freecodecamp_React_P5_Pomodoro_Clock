@@ -27,7 +27,7 @@ const App = () => {
 
   const increase = (setter, state) => {
     return (() => {
-      if (tellerId == undefined) {
+      if (tellerId == undefined && state < 60) {
         setter(state + 1);
       };
     });
@@ -35,7 +35,7 @@ const App = () => {
 
   const decrease = (setter, state) => {
     return (() => {
-      if (tellerId == undefined) {
+      if (tellerId == undefined && state > 1) {
         setter(state - 1);
       };
     });
