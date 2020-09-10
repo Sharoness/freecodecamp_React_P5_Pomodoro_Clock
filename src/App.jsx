@@ -1,11 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 const App = () => {
   const [breakLengthCount, setBreakLengthCount] = useState(5);
   const [sessionLengthCount, setSessionLengthCount] = useState(25);
-  const [timerCount, setTimerCount] = useState(sessionLengthCount*60);
+  const [timerCount, setTimerCount] = useState(10); // sessionLengthCount*60
   const [tellerId, setTellerId] = useState();
+
+
+  useEffect(() => {
+    if(timerCount <= 0) {
+      clearInterval(tellerId);
+      setTellerId(undefined);
+    }
+  }, [timerCount, tellerId])
+
+
 
   const startstop = () => {
     if (tellerId !== undefined) {
@@ -27,7 +37,7 @@ const App = () => {
 
   const increase = (setter, state) => {
     return (() => {
-      if (tellerId == undefined && state < 60) {
+      if (tellerId === undefined && state < 60) {
         setter(state + 1);
       };
     });
@@ -35,14 +45,14 @@ const App = () => {
 
   const decrease = (setter, state) => {
     return (() => {
-      if (tellerId == undefined && state > 1) {
+      if (tellerId === undefined && state > 1) {
         setter(state - 1);
       };
     });
   }
 
   const secToMmSs = (state) => {
-    const minutes = (state-state%60)/60
+    const minutes = (state-state%60)/60;
     const seconds = state%60;
     if (minutes < 10 && seconds < 10) {
       return "0"+minutes+":0"+seconds;
