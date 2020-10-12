@@ -2,19 +2,27 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 const App = () => {
-  const [breakLengthCount, setBreakLengthCount] = useState(5);
+  const [breakLengthCount, setBreakLengthCount] = useState(6);
   const [sessionLengthCount, setSessionLengthCount] = useState(25);
-  const [timerCount, setTimerCount] = useState(10); // sessionLengthCount*60
+  const [timerCount, setTimerCount] = useState(5); // sessionLengthCount*60
   const [tellerId, setTellerId] = useState();
+  const [sessionOrBreak, setSessionOrBreak] = useState("Session");
 
 
   useEffect(() => {
-    if(timerCount <= 0) {
+    if (timerCount <= 0) {
       clearInterval(tellerId);
       setTellerId(undefined);
+      // playSound();
+      if (sessionOrBreak === "Session") { // not working yet
+        setSessionOrBreak("Break");
+        setTimerCount(breakLengthCount);
+      } else { // not working yet
+        setSessionOrBreak("Session");
+        setTimerCount(sessionLengthCount);
+      }
     }
   }, [timerCount, tellerId])
-
 
 
   const startstop = () => {
@@ -30,7 +38,7 @@ const App = () => {
   const reset = () => {
     setBreakLengthCount(5);
     setSessionLengthCount(25);
-    setTimerCount(1500);
+    setTimerCount(10); // 1500
     clearInterval(tellerId);
     setTellerId(undefined);
   }
@@ -83,7 +91,7 @@ const App = () => {
       <button id="session-increment" onClick={increase(setSessionLengthCount, sessionLengthCount)}>session ^</button>
       <div id="break-length">Break length: {breakLengthCount}</div>
       <div id="session-length">Session length: {sessionLengthCount}</div>
-      <div id="timer-label">Session</div>
+      <div id="timer-label">hi {sessionOrBreak}</div>
       <div id="time-left">Time left: {secToMmSs(timerCount)}</div>
       <button id="start_stop" onClick={startstop}>start/stop</button>
       <button id="reset" onClick={reset}>reset</button>
