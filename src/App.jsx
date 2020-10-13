@@ -10,17 +10,19 @@ const App = () => {
 
 
   useEffect(() => {
-    if (timerCount <= 0) {
+    if (timerCount < 0) {
       clearInterval(tellerId);
       setTellerId(undefined);
       // playSound();
-      if (sessionOrBreak === "Session") { // not working yet
+      if (sessionOrBreak === "Session") { // go to break
         setSessionOrBreak("Break");
         setTimerCount(breakLengthCount);
-      } else { // not working yet
+      } else { // go to session
         setSessionOrBreak("Session");
         setTimerCount(sessionLengthCount);
       }
+      const id = setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
+      setTellerId(id);
     }
   }, [timerCount, tellerId])
 
