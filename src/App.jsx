@@ -43,6 +43,7 @@ const App = () => {
     setTimerCount(10); // 1500
     clearInterval(tellerId);
     setTellerId(undefined);
+    setSessionOrBreak("Session");
   }
 
   const increase = (setter, state) => {
