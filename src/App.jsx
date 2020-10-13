@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 
 const App = () => {
@@ -8,19 +8,23 @@ const App = () => {
   const [tellerId, setTellerId] = useState();
   const [sessionOrBreak, setSessionOrBreak] = useState("Session");
 
+  const audioRef = useRef();
 
   useEffect(() => {
+    if (timerCount === 0) {
+      audioRef.current.play();
+    }
     if (timerCount < 0) {
       console.log("useeffect tc", timerCount);
       clearInterval(tellerId);
       setTellerId(undefined);
-      // playSound();
+      
       if (sessionOrBreak === "Session") { // go to break
         setSessionOrBreak("Break");
-        setTimerCount(breakLengthCount);
+        setTimerCount(breakLengthCount*60);
       } else { // go to session
         setSessionOrBreak("Session");
-        setTimerCount(sessionLengthCount);
+        setTimerCount(sessionLengthCount*60);
       }
       const id = setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
       setTellerId(id);
@@ -45,6 +49,8 @@ const App = () => {
     clearInterval(tellerId);
     setTellerId(undefined);
     setSessionOrBreak("Session");
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
   }
 
   const increase = (setter, state) => {
@@ -75,7 +81,7 @@ const App = () => {
   }
 
   const secToMmSs = (state) => {
-    console.log("sextommss tc", timerCount);
+    console.log("sectommss tc", timerCount);
     const minutes = (state-state%60)/60;
     const seconds = state%60;
     if (minutes < 10 && seconds < 10) {
@@ -109,6 +115,7 @@ const App = () => {
       <p>Session length: </p><div id="session-length">{sessionLengthCount}</div>
       <p>timerlabel: </p><div id="timer-label">{sessionOrBreak}</div>
       <p>Time left: </p><div id="time-left">{secToMmSs(timerCount)}</div>
+      <audio id="beep" preload="auto" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" ref={audioRef}></audio>
       <button id="start_stop" onClick={startstop}>start/stop</button>
       <button id="reset" onClick={reset}>reset</button>
     </div>
