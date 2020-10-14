@@ -11,21 +11,17 @@ const App = () => {
   const audioRef = useRef();
 
   useEffect(() => {
-    console.log("useeffect sessionOrBreak: ", sessionOrBreak);
     if (timerCount === 0) {
       audioRef.current.play();
     }
-    if (timerCount < 0) {
-      console.log("useeffect (timerCount < 0) timercount: ", timerCount);
+    if (timerCount < 1) {
       clearInterval(tellerId);
       setTellerId(undefined);
       
-      if (sessionOrBreak === "Session") { // go to break
-        console.log("useeffect is Session timerCount: ", sessionOrBreak, timerCount);
+      if (sessionOrBreak === "Session") {
         setSessionOrBreak("Break");
         setTimerCount(breakLengthCount*60);
-      } else { // go to session
-        console.log("useeffect is Break timerCount: ", sessionOrBreak, timerCount);
+      } else {
         setSessionOrBreak("Session");
         setTimerCount(sessionLengthCount*60);
       }
@@ -35,7 +31,6 @@ const App = () => {
   }, [timerCount, tellerId])
 
   const startstop = () => {
-    console.log("startstop tc", timerCount);
     if (tellerId !== undefined) {
       clearInterval(tellerId);
       setTellerId(undefined);
@@ -58,10 +53,10 @@ const App = () => {
 
   const increase = (setter, state, timerlabel) => {
     return (() => {
-      if (tellerId === undefined && state < 60) {     // als die niet loopt
-        setter(state + 1);                            // add 1 bij break / session length
-        if (sessionOrBreak === timerlabel) {           // als sessionorbreak === sessionknop of breakknop
-          setTimerCount(state*60 + 60);               // verander timercount naar: state (breakLengthCount of sessionLengthCount) + 60
+      if (tellerId === undefined && state < 60) {
+        setter(state + 1);
+        if (sessionOrBreak === timerlabel) {
+          setTimerCount(state*60 + 60);
         } 
       };
     });
@@ -71,7 +66,6 @@ const App = () => {
     return (() => {
       if (tellerId === undefined && state > 1) {
         setter(state - 1);
-        // setTimerCount(state*60);
         if (sessionOrBreak === timerlabel) {
           setTimerCount(state*60 - 60);
         }
@@ -80,7 +74,6 @@ const App = () => {
   }
 
   const secToMmSs = (state) => {
-    console.log("sectommss sessionOrBreak & timerCount: ", sessionOrBreak, timerCount);
     const minutes = (state-state%60)/60;
     const seconds = state%60;
     if (minutes < 10 && seconds < 10) {
