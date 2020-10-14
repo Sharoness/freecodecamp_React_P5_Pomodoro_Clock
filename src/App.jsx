@@ -11,18 +11,21 @@ const App = () => {
   const audioRef = useRef();
 
   useEffect(() => {
+    console.log("useeffect sessionOrBreak: ", sessionOrBreak);
     if (timerCount === 0) {
       audioRef.current.play();
     }
     if (timerCount < 0) {
-      console.log("useeffect tc", timerCount);
+      console.log("useeffect (timerCount < 0) timercount: ", timerCount);
       clearInterval(tellerId);
       setTellerId(undefined);
       
       if (sessionOrBreak === "Session") { // go to break
+        console.log("useeffect is Session timerCount: ", sessionOrBreak, timerCount);
         setSessionOrBreak("Break");
         setTimerCount(breakLengthCount*60);
       } else { // go to session
+        console.log("useeffect is Break timerCount: ", sessionOrBreak, timerCount);
         setSessionOrBreak("Session");
         setTimerCount(sessionLengthCount*60);
       }
@@ -53,35 +56,31 @@ const App = () => {
     audioRef.current.currentTime = 0;
   }
 
-  const increase = (setter, state) => {
+  const increase = (setter, state, timerlabel) => {
     return (() => {
-      if (tellerId === undefined && state < 60) {
-        setter(state + 1);
-        if (sessionOrBreak === "Session") {
-          setTimerCount(sessionLengthCount*60 + 60);
-        } else {
-          setTimerCount(breakLengthCount*60 + 60);
-        }
+      if (tellerId === undefined && state < 60) {     // als die niet loopt
+        setter(state + 1);                            // add 1 bij break / session length
+        if (sessionOrBreak === timerlabel) {           // als sessionorbreak === sessionknop of breakknop
+          setTimerCount(state*60 + 60);               // verander timercount naar: state (breakLengthCount of sessionLengthCount) + 60
+        } 
       };
     });
   }
 
-  const decrease = (setter, state) => {
+  const decrease = (setter, state, timerlabel) => {
     return (() => {
       if (tellerId === undefined && state > 1) {
         setter(state - 1);
-        setTimerCount(state*60);
-        if (sessionOrBreak === "Session") {
-          setTimerCount(sessionLengthCount*60 - 60);
-        } else {
-          setTimerCount(breakLengthCount*60 - 60);
+        // setTimerCount(state*60);
+        if (sessionOrBreak === timerlabel) {
+          setTimerCount(state*60 - 60);
         }
       };
     });
   }
 
   const secToMmSs = (state) => {
-    console.log("sectommss tc", timerCount);
+    console.log("sectommss sessionOrBreak & timerCount: ", sessionOrBreak, timerCount);
     const minutes = (state-state%60)/60;
     const seconds = state%60;
     if (minutes < 10 && seconds < 10) {
@@ -107,10 +106,10 @@ const App = () => {
       <div id="session-label">
         Session Length
       </div>
-      <button id="break-decrement" onClick={decrease(setBreakLengthCount, breakLengthCount)}>break v</button>
-      <button id="session-decrement" onClick={decrease(setSessionLengthCount, sessionLengthCount)}>session v</button>
-      <button id="break-increment" onClick={increase(setBreakLengthCount, breakLengthCount)}>break ^</button>
-      <button id="session-increment" onClick={increase(setSessionLengthCount, sessionLengthCount)}>session ^</button>
+      <button id="break-decrement" onClick={decrease(setBreakLengthCount, breakLengthCount, "Break")}>break v</button>
+      <button id="session-decrement" onClick={decrease(setSessionLengthCount, sessionLengthCount, "Session")}>session v</button>
+      <button id="break-increment" onClick={increase(setBreakLengthCount, breakLengthCount, "Break")}>break ^</button>
+      <button id="session-increment" onClick={increase(setSessionLengthCount, sessionLengthCount, "Session")}>session ^</button>
       <p>Break length: </p><div id="break-length">{breakLengthCount}</div>
       <p>Session length: </p><div id="session-length">{sessionLengthCount}</div>
       <p>timerlabel: </p><div id="timer-label">{sessionOrBreak}</div>
