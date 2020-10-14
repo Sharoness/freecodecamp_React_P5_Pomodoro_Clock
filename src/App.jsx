@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
+import Title from './Title';
 
 const App = () => {
   const [breakLengthCount, setBreakLengthCount] = useState(5);
@@ -93,6 +94,7 @@ const App = () => {
 
   return (
     <div>
+      <Title />
       <div id="break-label">
         Break Length
       </div>
