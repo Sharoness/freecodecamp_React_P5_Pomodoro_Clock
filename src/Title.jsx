@@ -1,9 +1,9 @@
 import React from 'react';
-// import './Title.css';
+import './Title.css';
 
 const Title = () => {
     return (
-        <div>Pomodoro Clock</div>
+        <h1 id="title">Pomodoro Clock</h1>
     )
 }
 

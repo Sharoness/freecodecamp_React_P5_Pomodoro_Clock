@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Timer.css';
+import './Timer.css';
 
 const Timer = ({timerCount, sessionOrBreak, audioRef}) => {
     const secToMmSs = (state) => {
@@ -21,8 +21,8 @@ const Timer = ({timerCount, sessionOrBreak, audioRef}) => {
       }
 
     return (
-        <div>
-            <p>timerlabel: </p><div id="timer-label">{sessionOrBreak}</div>
+        <div id="timer">
+            <div id="timer-label">{sessionOrBreak}</div>
             <p>Time left: </p><div id="time-left">{secToMmSs(timerCount)}</div>
             <audio id="beep" preload="auto" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" ref={audioRef}></audio>
         </div>

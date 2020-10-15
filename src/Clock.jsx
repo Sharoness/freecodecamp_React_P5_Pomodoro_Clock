@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-// import './Clock.css';
+import './Clock.css';
 import LengthControl from './LengthControl';
 import Timer from './Timer';
 import TimerControl from './TimerControl';
@@ -31,10 +31,10 @@ const Clock = () => {
         const id = setInterval(() => {setTimerCount((value) => value - 1)}, 1000);
         setTellerId(id);
       }
-    }, [timerCount, tellerId]);
+    }, [timerCount, tellerId, breakLengthCount, sessionLengthCount, sessionOrBreak]);
 
     return (
-        <div>
+        <div id="clock">
             <LengthControl breakLengthCount={breakLengthCount} setBreakLengthCount={setBreakLengthCount} sessionLengthCount={sessionLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} />
             <Timer timerCount={timerCount} sessionOrBreak={sessionOrBreak} audioRef={audioRef} />
             <TimerControl setBreakLengthCount={setBreakLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} setTellerId={setTellerId} setSessionOrBreak={setSessionOrBreak} audioRef={audioRef} />
