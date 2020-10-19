@@ -1,5 +1,8 @@
 import React from 'react';
 import './TimerControl.css';
+import { MdPlayArrow } from 'react-icons/md';
+import { MdPause } from 'react-icons/md';
+import { MdRefresh } from 'react-icons/md';
 
 const TimerControl = ({setBreakLengthCount, setSessionLengthCount, setTimerCount, tellerId, setTellerId, setSessionOrBreak, audioRef}) => {
       
@@ -27,8 +30,8 @@ const TimerControl = ({setBreakLengthCount, setSessionLengthCount, setTimerCount
   
     return (
         <div className="timer-control">
-            <button id="start_stop" onClick={startstop}>start/stop</button>
-            <button id="reset" onClick={reset}>reset</button>
+            <button id="start_stop" onClick={startstop}><MdPlayArrow size={24} /><MdPause size={24} /></button>
+            <button id="reset" onClick={reset}><MdRefresh size={24} /></button>
         </div>
     )
 }

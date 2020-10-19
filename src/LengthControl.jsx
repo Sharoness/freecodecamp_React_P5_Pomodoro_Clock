@@ -1,5 +1,6 @@
 import React from 'react';
-import {ArrowUpIcon, ArrowDownIcon} from '@primer/octicons-react';
+import { MdArrowUpward } from 'react-icons/md';
+import { MdArrowDownward } from 'react-icons/md';
 import './LengthControl.css';
 
 const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, lengthCount, setLengthCount, setTimerCount, tellerId, sessionOrBreak, label}) => {
@@ -17,10 +18,10 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
     const decrease = (setter, state, timerlabel) => {
         return (() => {
             if (tellerId === undefined && state > 1) {
-            setter(state - 1);
-            if (sessionOrBreak === timerlabel) {
-                setTimerCount(state*60 - 60);
-            }
+                setter(state - 1);
+                if (sessionOrBreak === timerlabel) {
+                    setTimerCount(state*60 - 60);
+                }
             };
         });
     }
@@ -30,9 +31,9 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
             <div id={idLabel}>
                 {length}
             </div>
-            <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><ArrowDownIcon size={16} /></button>
+            <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><MdArrowDownward size={16} /></button>
             <div id={idLength}>{lengthCount}</div>
-            <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><ArrowUpIcon size={16} /></button>
+            <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><MdArrowUpward size={16} /></button>
         </div>
     )
 }
