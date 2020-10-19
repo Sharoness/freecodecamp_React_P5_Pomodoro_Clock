@@ -1,7 +1,8 @@
 import React from 'react';
+import {ArrowUpIcon, ArrowDownIcon} from '@primer/octicons-react';
 // import './LengthControl.css';
 
-const LengthControl = ({breakLengthCount, setBreakLengthCount, sessionLengthCount, setSessionLengthCount, setTimerCount, tellerId, sessionOrBreak}) => {
+const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, lengthCount, setLengthCount, setTimerCount, tellerId, sessionOrBreak, label}) => {
     const increase = (setter, state, timerlabel) => {
         return (() => {
             if (tellerId === undefined && state < 60) {
@@ -26,18 +27,12 @@ const LengthControl = ({breakLengthCount, setBreakLengthCount, sessionLengthCoun
 
     return (
         <div>
-            <div id="break-label">
-                Break Length
+            <div id={idLabel}>
+                {length}
             </div>
-            <div id="session-label">
-                Session Length
-            </div>
-            <button id="break-decrement" onClick={decrease(setBreakLengthCount, breakLengthCount, "Break")}>break v</button>
-            <button id="session-decrement" onClick={decrease(setSessionLengthCount, sessionLengthCount, "Session")}>session v</button>
-            <button id="break-increment" onClick={increase(setBreakLengthCount, breakLengthCount, "Break")}>break ^</button>
-            <button id="session-increment" onClick={increase(setSessionLengthCount, sessionLengthCount, "Session")}>session ^</button>
-            <p>Break length: </p><div id="break-length">{breakLengthCount}</div>
-            <p>Session length: </p><div id="session-length">{sessionLengthCount}</div>
+            <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><ArrowDownIcon size={16} /></button>
+            <div id={idLength}>{lengthCount}</div>
+            <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><ArrowUpIcon size={16} /></button>
         </div>
     )
 }

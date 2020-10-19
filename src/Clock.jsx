@@ -35,9 +35,11 @@ const Clock = () => {
 
     return (
         <div id="clock">
-            <LengthControl breakLengthCount={breakLengthCount} setBreakLengthCount={setBreakLengthCount} sessionLengthCount={sessionLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} />
-            <Timer timerCount={timerCount} sessionOrBreak={sessionOrBreak} audioRef={audioRef} />
-            <TimerControl setBreakLengthCount={setBreakLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} setTellerId={setTellerId} setSessionOrBreak={setSessionOrBreak} audioRef={audioRef} />
+          <LengthControl idLabel={"break-label"} length={"Break Length"} idDecrement={"break-decrement"} idLength={"break-length"} idIncrement={"break-increment"} lengthCount={breakLengthCount} setLengthCount={setBreakLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Break"} />
+          <LengthControl idLabel={"session-label"} length={"Session Length"} idDecrement={"session-decrement"} idLength={"session-length"} idIncrement={"session-increment"} lengthCount={sessionLengthCount} setLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Session"} />
+            
+          <Timer timerCount={timerCount} sessionOrBreak={sessionOrBreak} audioRef={audioRef} />
+          <TimerControl setBreakLengthCount={setBreakLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} setTellerId={setTellerId} setSessionOrBreak={setSessionOrBreak} audioRef={audioRef} />
         </div>
     )
 }
