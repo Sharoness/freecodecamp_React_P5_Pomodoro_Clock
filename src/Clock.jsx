@@ -34,7 +34,7 @@ const Clock = () => {
     }, [timerCount, tellerId, breakLengthCount, sessionLengthCount, sessionOrBreak]);
 
     return (
-        <div id="clock">
+        <div id="clock" className="clock">
           <LengthControl idLabel={"break-label"} length={"Break Length"} idDecrement={"break-decrement"} idLength={"break-length"} idIncrement={"break-increment"} lengthCount={breakLengthCount} setLengthCount={setBreakLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Break"} />
           <LengthControl idLabel={"session-label"} length={"Session Length"} idDecrement={"session-decrement"} idLength={"session-length"} idIncrement={"session-increment"} lengthCount={sessionLengthCount} setLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Session"} />
             

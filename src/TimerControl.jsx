@@ -1,5 +1,5 @@
 import React from 'react';
-// import './TimerControl.css';
+import './TimerControl.css';
 
 const TimerControl = ({setBreakLengthCount, setSessionLengthCount, setTimerCount, tellerId, setTellerId, setSessionOrBreak, audioRef}) => {
       
@@ -26,7 +26,7 @@ const TimerControl = ({setBreakLengthCount, setSessionLengthCount, setTimerCount
     
   
     return (
-        <div>
+        <div className="timer-control">
             <button id="start_stop" onClick={startstop}>start/stop</button>
             <button id="reset" onClick={reset}>reset</button>
         </div>

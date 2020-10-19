@@ -1,6 +1,6 @@
 import React from 'react';
 import {ArrowUpIcon, ArrowDownIcon} from '@primer/octicons-react';
-// import './LengthControl.css';
+import './LengthControl.css';
 
 const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, lengthCount, setLengthCount, setTimerCount, tellerId, sessionOrBreak, label}) => {
     const increase = (setter, state, timerlabel) => {
@@ -12,9 +12,9 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
             } 
             };
         });
-        }
+    }
 
-        const decrease = (setter, state, timerlabel) => {
+    const decrease = (setter, state, timerlabel) => {
         return (() => {
             if (tellerId === undefined && state > 1) {
             setter(state - 1);
@@ -23,10 +23,10 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
             }
             };
         });
-        }
+    }
 
     return (
-        <div>
+        <div style={{gridColumn: length === "Break Length" ? "1 / 3" : "5 / 7"}}>
             <div id={idLabel}>
                 {length}
             </div>
