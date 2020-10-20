@@ -27,13 +27,15 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
     }
 
     return (
-        <div style={{gridColumn: length === "Break Length" ? "1 / 3" : "5 / 7"}}>
+        <div style={{gridColumn: length === "Break Length" ? "1 / 3" : "5 / 7"}} className="length-control">
             <div id={idLabel}>
                 {length}
             </div>
-            <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><MdArrowDownward size={16} /></button>
-            <div id={idLength}>{lengthCount}</div>
-            <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><MdArrowUpward size={16} /></button>
+            <div id="arrowNumArrow">
+                <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><MdArrowDownward size={20} /></button>
+                <div id={idLength}>{lengthCount}</div>
+                <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><MdArrowUpward size={20} /></button>
+            </div>
         </div>
     )
 }

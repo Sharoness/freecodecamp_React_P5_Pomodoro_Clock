@@ -1,5 +1,15 @@
 #timer {
-    background-color: #996881;
     grid-column: 2 / 6;
     grid-row: 2 / 3;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 8px solid #996881;
+}
+
+#time-left {
+    font-size: 45px;
+}
+
+#timer-label {
+    padding-top: 10px;
 }

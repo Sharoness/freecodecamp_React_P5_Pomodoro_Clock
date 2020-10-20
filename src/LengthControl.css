@@ -1,0 +1,33 @@
+#arrowNumArrow {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+#arrowNumArrow button {
+    padding: 0px;
+    margin-top: 10px;
+}
+
+#break-label {
+    font-size: 20px;
+}
+
+#session-label {
+    font-size: 20px;
+}
+
+#break-length {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+}
+
+#session-length {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+}

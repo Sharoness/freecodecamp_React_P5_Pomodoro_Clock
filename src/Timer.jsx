@@ -22,9 +22,11 @@ const Timer = ({timerCount, sessionOrBreak, audioRef}) => {
 
     return (
         <div id="timer" className="timer">
+          <div className="timer-wrapper">
             <div id="timer-label">{sessionOrBreak}</div>
-            <p>Time left: </p><div id="time-left">{secToMmSs(timerCount)}</div>
+            <div id="time-left">{secToMmSs(timerCount)}</div>
             <audio id="beep" preload="auto" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" ref={audioRef}></audio>
+          </div>
         </div>
     )
 }
