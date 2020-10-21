@@ -1,15 +1,22 @@
 #timer {
-    grid-column: 2 / 6;
-    grid-row: 2 / 3;
-    font-size: 20px;
-    border-radius: 50px;
-    border: 8px solid #996881;
-}
-
-#time-left {
-    font-size: 45px;
+    border: 5px solid #996881;
+    border-radius: 23px;
+    width: 250px;
+    height: 140px;
+    font-size: 4vh;
+    display: inline-block;
+    margin: 50px;
 }
 
 #timer-label {
-    padding-top: 10px;
+    margin: 10px;
+}
+
+#time-left {
+    font-size: 5vh;
+    margin: 10px;
+}
+
+.timer-wrapper {
+    margin: 5px;
 }

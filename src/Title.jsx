@@ -3,7 +3,7 @@ import './Title.css';
 
 const Title = () => {
     return (
-        <h1 id="title">Pomodoro Clock</h1>
+        <div id="title">Pomodoro Clock</div>
     )
 }
 

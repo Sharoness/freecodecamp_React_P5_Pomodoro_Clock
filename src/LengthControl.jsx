@@ -27,7 +27,7 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
     }
 
     return (
-        <div style={{gridColumn: length === "Break Length" ? "1 / 3" : "5 / 7"}} className="length-control">
+        <div className="length-control">
             <div id={idLabel}>
                 {length}
             </div>

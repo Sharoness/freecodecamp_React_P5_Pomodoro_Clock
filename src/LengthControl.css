@@ -1,33 +1,20 @@
 #arrowNumArrow {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
 }
 
 #arrowNumArrow button {
-    padding: 0px;
-    margin-top: 10px;
+    background-color: #BDA4B1;
+    color: #E7EBE6;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 
-#break-label {
-    font-size: 20px;
-}
-
-#session-label {
-    font-size: 20px;
-}
-
-#break-length {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: auto;
-}
-
-#session-length {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: auto;
+.length-control {
+    width: 250px;
+    font-size: 4vh;
 }

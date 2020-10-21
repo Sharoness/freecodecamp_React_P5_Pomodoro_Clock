@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 #title {
-    text-align: center;
     font-family: 'Indie Flower', cursive;
-    font-size: 67px;
+    align-self: center;
+    font-size: 8vh;
 }

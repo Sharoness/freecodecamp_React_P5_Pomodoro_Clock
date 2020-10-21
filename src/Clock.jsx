@@ -34,10 +34,19 @@ const Clock = () => {
     }, [timerCount, tellerId, breakLengthCount, sessionLengthCount, sessionOrBreak]);
 
     return (
-        <div id="clock" className="clock">
-          <LengthControl idLabel={"break-label"} length={"Break Length"} idDecrement={"break-decrement"} idLength={"break-length"} idIncrement={"break-increment"} lengthCount={breakLengthCount} setLengthCount={setBreakLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Break"} />
-          <LengthControl idLabel={"session-label"} length={"Session Length"} idDecrement={"session-decrement"} idLength={"session-length"} idIncrement={"session-increment"} lengthCount={sessionLengthCount} setLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Session"} />
-          <Timer timerCount={timerCount} sessionOrBreak={sessionOrBreak} audioRef={audioRef} />
+        <div id="clock">
+          <div id="length-control">
+            <div id="break">
+              <LengthControl idLabel={"break-label"} length={"Break Length"} idDecrement={"break-decrement"} idLength={"break-length"} idIncrement={"break-increment"} lengthCount={breakLengthCount} setLengthCount={setBreakLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Break"} />
+            </div>
+            <div id="session">
+              <LengthControl idLabel={"session-label"} length={"Session Length"} idDecrement={"session-decrement"} idLength={"session-length"} idIncrement={"session-increment"} lengthCount={sessionLengthCount} setLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} sessionOrBreak={sessionOrBreak} label={"Session"} />
+            </div>
+          </div>
+          <div className="timer">
+            <Timer timerCount={timerCount} sessionOrBreak={sessionOrBreak} audioRef={audioRef} />
+          </div>
+          
           <TimerControl setBreakLengthCount={setBreakLengthCount} setSessionLengthCount={setSessionLengthCount} setTimerCount={setTimerCount} tellerId={tellerId} setTellerId={setTellerId} setSessionOrBreak={setSessionOrBreak} audioRef={audioRef} />
         </div>
     )

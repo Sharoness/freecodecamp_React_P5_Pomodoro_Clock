@@ -1,21 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Open+Sans&display=swap');
 
 #clock {
-    text-align: center;
     font-family: 'Open Sans', sans-serif;
+    margin: 10px;
 }
 
-.clock {
-    display: grid;
-    grid-template-columns: 100px 100px 50px 50px 100px 100px;
-    grid-template-rows: 100px 150px auto;
-    grid-row-gap: 50px;
+#length-control {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
 }
 
-button {
-    background: none;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    color: #E7EBE6;
+#break {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#session {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    margin: 20px;
 }

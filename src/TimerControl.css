@@ -1,8 +1,15 @@
-.timer-control {
-    grid-column: 3 / 5;
-    grid-row: 3 / 4;
+.timer-control button {
+    background-color: #BDA4B1;
+    color: #E7EBE6;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 
 .arrow {
-    margin-right: -8px;
+    margin: -5px;
+}
+
+.timer-control {
+    font-size: 4vh;
 }

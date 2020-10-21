@@ -21,7 +21,7 @@ const Timer = ({timerCount, sessionOrBreak, audioRef}) => {
       }
 
     return (
-        <div id="timer" className="timer">
+        <div id="timer">
           <div className="timer-wrapper">
             <div id="timer-label">{sessionOrBreak}</div>
             <div id="time-left">{secToMmSs(timerCount)}</div>

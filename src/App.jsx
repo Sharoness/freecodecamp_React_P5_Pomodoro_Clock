@@ -5,7 +5,7 @@ import Clock from './Clock';
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Title />
       <Clock />
     </div>
