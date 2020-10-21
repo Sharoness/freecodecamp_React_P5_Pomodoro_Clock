@@ -2,7 +2,8 @@
 
 #clock {
     font-family: 'Open Sans', sans-serif;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #length-control {
@@ -11,7 +12,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #break {
@@ -31,5 +33,6 @@
 }
 
 .timer {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
