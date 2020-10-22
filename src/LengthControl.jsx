@@ -32,9 +32,9 @@ const LengthControl = ({idLabel, length, idDecrement, idLength, idIncrement, len
                 {length}
             </div>
             <div id="arrowNumArrow">
-                <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><MdArrowDownward size={20} /></button>
+                <button id={idDecrement} onClick={decrease(setLengthCount, lengthCount, label)}><MdArrowDownward size={24} /></button>
                 <div id={idLength}>{lengthCount}</div>
-                <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><MdArrowUpward size={20} /></button>
+                <button id={idIncrement} onClick={increase(setLengthCount, lengthCount, label)}><MdArrowUpward size={24} /></button>
             </div>
         </div>
     )
